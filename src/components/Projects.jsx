@@ -34,62 +34,34 @@ const Projects = () => {
       repo: "https://github.com/FelipeZelent/TerminalChess"
     }
   ];
+return (
+    <section id="projects" className="mb-32 pt-16 border-t border-neutral-200 scroll-mt-28">
+      <h2 className="text-3xl font-bold tracking-tight mb-12">Projetos Selecionados</h2>
 
-  const filteredProjects = activeTab === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeTab);
-
-  return (
-    <section id="work" className="mb-32">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 border-b border-neutral-200 pb-6">
-        <h2 className="text-3xl font-bold tracking-tight">Projetos Selecionados</h2>
-        
-        <div className="flex gap-6 mt-4 md:mt-0 text-sm">
-          <button 
-            onClick={() => setActiveTab('all')} 
-            className={`${activeTab === 'all' ? 'text-black font-semibold' : 'text-neutral-400 hover:text-neutral-600'}`}
-          >
-            Todos
-          </button>
-          <button 
-            onClick={() => setActiveTab('backend')} 
-            className={`${activeTab === 'backend' ? 'text-black font-semibold' : 'text-neutral-400 hover:text-neutral-600'}`}
-          >
-            Backend
-          </button>
-          <button 
-            onClick={() => setActiveTab('data')} 
-            className={`${activeTab === 'data' ? 'text-black font-semibold' : 'text-neutral-400 hover:text-neutral-600'}`}
-          >
-            Dados
-          </button>
-        </div>
-      </div>
-
-      <div className="grid gap-6">
-        {filteredProjects.map((project) => (
-          <div key={project.id} className="group bg-white border border-neutral-100 p-8 rounded-lg hover:border-neutral-300 hover:shadow-sm transition-all duration-300">
-            <div className="flex flex-col md:flex-row justify-between md:items-start gap-4 mb-4">
-              <div>
-                <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase mb-2 block">
-                  {project.category}
-                </span>
-                <h3 className="text-xl font-bold text-neutral-900 group-hover:text-neutral-700 transition-colors">
-                  {project.title}
-                </h3>
-              </div>
-              <a href={project.repo} className="p-2 rounded-full bg-neutral-50 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-neutral-200">
+      {/* Grid: 1 coluna (mobile), 2 (tablet), 3 (desktop) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <div key={project.id} className="group bg-white border border-neutral-100 p-6 rounded-xl hover:border-neutral-300 hover:shadow-md transition-all duration-300 flex flex-col h-full">
+            <div className="flex justify-between items-start mb-4">
+              <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
+                {project.category}
+              </span>
+              <a href={project.repo} className="text-neutral-400 hover:text-black transition-colors">
                 <ArrowUpRight size={20} />
               </a>
             </div>
             
-            <p className="text-neutral-600 mb-6 max-w-2xl leading-relaxed">
+            <h3 className="text-lg font-bold text-neutral-900 mb-3 group-hover:text-blue-600 transition-colors">
+              {project.title}
+            </h3>
+            
+            <p className="text-neutral-600 text-sm leading-relaxed mb-6 flex-grow">
               {project.description}
             </p>
             
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mt-auto">
               {project.tech.map((t, index) => (
-                <span key={index} className="text-xs font-medium text-neutral-500 bg-neutral-100 px-3 py-1 rounded-full">
+                <span key={index} className="text-[10px] font-medium text-neutral-500 bg-neutral-50 px-2 py-1 rounded border border-neutral-100">
                   {t}
                 </span>
               ))}

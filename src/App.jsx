@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import About from './components/About';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Navbar />
       <main className="max-w-5xl mx-auto px-6 pt-32 pb-20">
         <Hero />
+        <About />
         <Skills />
         <Projects />
         <Contact />
