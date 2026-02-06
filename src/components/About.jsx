@@ -12,7 +12,7 @@ const About = () => {
             <div className="text-lg text-neutral-600 leading-relaxed max-w-3xl space-y-6">
                 <p>
                     Sou desenvolvedor e analista de dados apaixonado por tecnologia e resolução de problemas.
-                    Estudante de Sistemas de Informação (formando em 2025), tenho experiência com desenvolvimento backend em Java/Spring Boot,
+                    Estudante de Sistemas de Informação, tenho experiência com desenvolvimento backend em Java/Spring Boot,
                     análise de dados com SQL e Power BI, e automação de processos.
                 </p>
                 <p>
