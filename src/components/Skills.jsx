@@ -3,17 +3,16 @@ import { Server, Database, Smartphone } from 'lucide-react';
 
 const Skills = () => {
   return (
-    <section id="skills" className="mb-32 pt-16 border-t border-neutral-200 scroll-mt-28">
-      <h2 className="text-3xl font-bold tracking-tight mb-12">Habilidades Técnicas</h2>
+    <section id="skills" className="min-h-screen flex flex-col justify-center py-20 border-t border-neutral-200">
+      <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16">Habilidades Técnicas</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        {/* Coluna 1 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
         <div>
-          <div className="flex items-center gap-2 mb-6 text-neutral-900">
-            <Server size={20} />
-            <h3 className="font-bold text-lg">Backend & DevOps</h3>
+          <div className="flex items-center gap-3 mb-8 text-neutral-900">
+            <Server size={28} />
+            <h3 className="font-bold text-2x1">Backend & DevOps</h3>
           </div>
-          <ul className="space-y-3 text-neutral-600 text-sm border-l-2 border-neutral-100 pl-4">
+          <ul className="space-y-4 text-neutral-600 text-sm border-l-2 border-neutral-200 pl-5">
             <li>Java (Spring) & C#</li>
             <li>C / C++ & JavaScript</li>
             <li>Node.js & Python</li>
@@ -23,13 +22,12 @@ const Skills = () => {
           </ul>
         </div>
 
-        {/* Coluna 2 */}
         <div>
-          <div className="flex items-center gap-2 mb-6 text-neutral-900">
-            <Database size={20} />
-            <h3 className="font-bold text-lg">Data & Analytics</h3>
+          <div className="flex items-center gap-3 mb-8 text-neutral-900">
+            <Database size={28} />
+            <h3 className="font-bold text-2xl">Data & Analytics</h3>
           </div>
-          <ul className="space-y-3 text-neutral-600 text-sm border-l-2 border-neutral-100 pl-4">
+          <ul className="space-y-4 text-neutral-600 text-sm border-l-2 border-neutral-200 pl-5">
             <li>Python (Pandas, NumPy)</li>
             <li>SQL Avançado</li>
             <li>Power BI</li>
@@ -38,13 +36,12 @@ const Skills = () => {
           </ul>
         </div>
 
-        {/* Coluna 3 */}
         <div>
-          <div className="flex items-center gap-2 mb-6 text-neutral-900">
-            <Smartphone size={20} />
-            <h3 className="font-bold text-lg">Mobile & Frontend</h3>
+          <div className="flex items-center gap-3 mb-8 text-neutral-900">
+            <Smartphone size={28} />
+            <h3 className="font-bold text-2xl">Mobile & Frontend</h3>
           </div>
-          <ul className="space-y-3 text-neutral-600 text-sm border-l-2 border-neutral-100 pl-4">
+          <ul className="space-y-4 text-neutral-600 text-sm border-l-2 border-neutral-200 pl-5">
             <li>React Native, Flutter & Kotlin</li>
             <li>React.js & Angular</li>
             <li>Dart & TypeScript</li>
