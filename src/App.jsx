@@ -8,15 +8,20 @@ import About from './components/About';
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
+    <div className="bg-[#050505] text-slate-300 font-sans selection:bg-white selection:text-black relative min-h-screen overflow-hidden">
+      
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(20,20,20,0.5)_0%,#050505_100%)]" />
+
       <Navbar />
-      <main className="max-w-5xl mx-auto px-6 pt-32 pb-20">
+
+      <main className="max-w-6xl mx-auto px-6 pt-32 pb-20 relative z-10">
         <Hero />
         <About />
         <Skills />
         <Projects />
         <Contact />
       </main>
+
     </div>
   );
 };
