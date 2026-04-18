@@ -1,29 +1,21 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import About from './components/About';
+import { HashRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
+import NotFound from "./pages/NotFound";
 
-const App = () => {
+export default function App() {
   return (
-    <div className="bg-[#050505] text-slate-300 font-sans selection:bg-white selection:text-black relative min-h-screen overflow-hidden">
-      
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(20,20,20,0.5)_0%,#050505_100%)]" />
-
-      <Navbar />
-
-      <main className="max-w-6xl mx-auto px-6 pt-32 pb-20 relative z-10">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
-};
-
-export default App;
+}
