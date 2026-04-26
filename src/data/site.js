@@ -1,6 +1,6 @@
 export const siteProfile = {
   name: "Felipe Zelent",
-  role: "Backend & Data Developer"
+  role: "Data & Automation Developer"
 };
 
 export const navLinks = [
