@@ -9,7 +9,7 @@ export default function Projects() {
       </h1>
       <p className="max-w-2xl text-lg leading-8 text-[var(--color-text)]">
         Alguns projetos que ajudam a apresentar minha forma de construir
-        aplicacoes, organizar solucoes e transformar ideias em produtos
+        aplicações, organizar soluções e transformar ideias em produtos
         funcionais.
       </p>
 

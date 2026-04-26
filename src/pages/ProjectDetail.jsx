@@ -29,7 +29,7 @@ export default function ProjectDetail() {
     return (
       <div className="space-y-4">
         <h1 className="text-2xl font-semibold text-[var(--color-heading)]">
-          Projeto nao encontrado
+          Projeto não encontrado
         </h1>
         <Link
           to="/projects"
@@ -98,8 +98,8 @@ export default function ProjectDetail() {
       ) : (
         <section className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)]/75 px-6 py-7 shadow-[0_1px_0_rgba(0,0,0,0.03)]">
           <p className="text-sm text-[var(--color-text)]">
-            Ainda nao adicionei screenshots deste projeto nesta versao do
-            portfolio.
+            Ainda não adicionei screenshots deste projeto nesta versão do
+            portfólio.
           </p>
         </section>
       )}

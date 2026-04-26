@@ -7,10 +7,10 @@ export default function NotFound() {
         404
       </p>
       <h1 className="text-4xl font-medium tracking-tight text-[var(--color-heading)]">
-        Pagina nao encontrada
+        Página não encontrada
       </h1>
       <p className="max-w-xl text-[15px] leading-7 text-[var(--color-text)]">
-        O caminho que voce tentou acessar nao existe nesta versao do portfolio.
+        O caminho que você tentou acessar não existe nesta versão do portfólio.
       </p>
       <Link
         to="/"

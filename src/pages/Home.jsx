@@ -32,16 +32,20 @@ export default function Home() {
       </p>
 
       <p className="max-w-2xl text-lg leading-8 text-[var(--color-text)]">
-        Sou desenvolvedor e analista de dados apaixonado por tecnologia e
-        resolucao de problemas. Estudante de Sistemas de Informacao, tenho
-        experiencia com desenvolvimento backend em Java/Spring Boot, analise de
-        dados com SQL e Power BI, e automacao de processos.
+        Atuo na estruturação, tratamento e automação de dados em contextos reais
+        de negócio, com foco em melhorar a confiabilidade das informações e
+        reduzir esforço operacional.
       </p>
 
       <p className="max-w-2xl text-lg leading-8 text-[var(--color-text)]">
-        Busco transformar desafios tecnicos em solucoes praticas e funcionais,
-        sempre aprendendo novas tecnologias e buscando formas mais eficientes de
-        resolver problemas.
+        Tenho experiência prática com ETL, limpeza e padronização de dados
+        provenientes de sistemas legados, além da criação de automações que
+        tornaram processos internos mais eficientes.
+      </p>
+
+      <p className="max-w-2xl text-lg leading-8 text-[var(--color-text)]">
+        Também desenvolvo APIs REST com Java e Spring Boot, o que me permite
+        atuar na ponte entre dados, processos e aplicações.
       </p>
 
       <Link
