@@ -4,8 +4,9 @@ export const siteProfile = {
 };
 
 export const navLinks = [
-  { to: "/", label: "home", end: true },
-  { to: "/projects", label: "projetos" }
+  { to: "/#about", label: "sobre" },
+  { to: "/#projects", label: "projetos" },
+  { to: "/#contact", label: "contato" }
 ];
 
 export const socialLinks = [

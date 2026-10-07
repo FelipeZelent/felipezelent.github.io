@@ -1,13 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Container from "./Container";
 import { navLinks, siteProfile } from "../data/site";
-
-const linkClass = ({ isActive }) =>
-  `transition-colors ${
-    isActive
-      ? "text-[var(--color-accent)]"
-      : "text-[var(--color-muted)] hover:text-[var(--color-heading)]"
-  }`;
 
 function ThemeIcon({ theme }) {
   if (theme === "dark") {
@@ -15,7 +9,7 @@ function ThemeIcon({ theme }) {
       <svg
         aria-hidden="true"
         viewBox="0 0 24 24"
-        className="h-4 w-4"
+        className="h-4.5 w-4.5"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
@@ -39,7 +33,7 @@ function ThemeIcon({ theme }) {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-4 w-4"
+      className="h-4.5 w-4.5"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -52,26 +46,112 @@ function ThemeIcon({ theme }) {
 }
 
 export default function Navbar({ theme, onToggleTheme }) {
+  const location = useLocation();
+  const [activeHash, setActiveHash] = useState("");
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveHash("");
+      return;
+    }
+
+    if (window.location.hash) {
+      setActiveHash(window.location.hash);
+    } else {
+      setActiveHash("#about");
+    }
+
+    const sections = ["about", "projects", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-30% 0px -40% 0px", // triggers when the section is in the middle of the viewport
+      threshold: 0,
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveHash(`#${entry.target.id}`);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [location.pathname]);
+
+  const handleNavClick = (e, to) => {
+    if (to.startsWith("/#")) {
+      const hash = to.split("#")[1];
+      if (location.pathname === "/") {
+        e.preventDefault();
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", `#${hash}`);
+          setActiveHash(`#${hash}`);
+        }
+      }
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.pushState(null, "", "/");
+      setActiveHash("#about");
+    }
+  };
+
+  const getLinkClass = (to) => {
+    const hash = to.split("#")[1];
+    const isActive =
+      location.pathname === "/" &&
+      (activeHash === `#${hash}` || (activeHash === "" && hash === "about"));
+
+    return `transition-all duration-300 font-medium text-xs sm:text-sm py-1.5 px-3 rounded-full hover:text-[var(--color-heading)] ${
+      isActive
+        ? "text-[var(--color-accent)] bg-[var(--color-accent-light)]"
+        : "text-[var(--color-muted)] hover:bg-[var(--color-border)]/20"
+    }`;
+  };
+
   return (
-    <header>
+    <header className="sticky top-0 z-50 glass-nav transition-all duration-300">
       <Container
         as="nav"
-        className="flex items-center justify-between py-8 text-sm"
+        size="lg"
+        className="flex items-center justify-between py-4"
       >
-        <NavLink to="/" className="font-medium text-[var(--color-heading)]">
+        <Link 
+          to="/" 
+          onClick={handleLogoClick}
+          className="font-semibold text-base tracking-tight text-[var(--color-heading)] transition-opacity hover:opacity-80"
+        >
           {siteProfile.name}
-        </NavLink>
+        </Link>
 
-        <div className="flex items-center gap-4 sm:gap-5">
+        <div className="flex items-center gap-2 sm:gap-4">
           {navLinks.map((link) => (
-            <NavLink
+            <Link
               key={link.to}
               to={link.to}
-              end={link.end}
-              className={linkClass}
+              onClick={(e) => handleNavClick(e, link.to)}
+              className={getLinkClass(link.to)}
             >
               {link.label}
-            </NavLink>
+            </Link>
           ))}
           <button
             type="button"
@@ -81,7 +161,7 @@ export default function Navbar({ theme, onToggleTheme }) {
                 ? "Mudar para tema claro"
                 : "Mudar para tema escuro"
             }
-            className="inline-flex h-5 w-5 items-center justify-center text-[var(--color-muted)] transition-colors hover:text-[var(--color-heading)]"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-muted)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-heading)] hover:bg-[var(--color-border)]/30 cursor-pointer"
           >
             <ThemeIcon theme={theme} />
           </button>
@@ -90,3 +170,4 @@ export default function Navbar({ theme, onToggleTheme }) {
     </header>
   );
 }
+

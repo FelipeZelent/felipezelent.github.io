@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle";
 import { projects } from "../data/projects";
 import ProjectCarousel from "../components/ProjectCarousel";
+import Container from "../components/Container";
 
 function ArrowUpRightIcon() {
   return (
@@ -27,22 +28,25 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className="space-y-4">
-        <h1 className="text-2xl font-semibold text-[var(--color-heading)]">
-          Projeto não encontrado
-        </h1>
-        <Link
-          to="/projects"
-          className="text-[var(--color-muted)] hover:text-[var(--color-heading)]"
-        >
-          Voltar para projetos
-        </Link>
-      </div>
+      <Container size="sm">
+        <div className="space-y-4">
+          <h1 className="text-2xl font-semibold text-[var(--color-heading)]">
+            Projeto não encontrado
+          </h1>
+          <Link
+            to="/projects"
+            className="text-[var(--color-muted)] hover:text-[var(--color-heading)]"
+          >
+            Voltar para projetos
+          </Link>
+        </div>
+      </Container>
     );
   }
 
   return (
-    <article className="space-y-10">
+    <Container size="sm">
+      <article className="space-y-10">
       <header className="space-y-6">
         <Link
           to="/projects"
@@ -122,5 +126,6 @@ export default function ProjectDetail() {
         </p>
       </section>
     </article>
+    </Container>
   );
 }

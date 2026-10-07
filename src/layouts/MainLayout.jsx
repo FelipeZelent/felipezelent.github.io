@@ -60,11 +60,11 @@ export default function MainLayout() {
           setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"))
         }
       />
-      <Container as="main" className="flex-1 py-8">
+      <main className="flex-1 py-8">
         <Outlet />
-      </Container>
-      <footer className="mt-12 sm:mt-16">
-        <Container className="flex flex-col gap-5 pb-10 text-sm text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between">
+      </main>
+      <footer className="mt-12 sm:mt-16 border-t border-[var(--color-border)]/45">
+        <Container size="lg" className="flex flex-col gap-5 py-10 text-sm text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-4">
             {socialLinks.map((link) => {
               const Icon = socialIcons[link.platform];
